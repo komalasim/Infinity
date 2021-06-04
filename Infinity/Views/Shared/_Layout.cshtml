@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Infinity</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/css/all.css">
+    <link rel="stylesheet" href="~/Content/css/Style1.css">
+    <link rel="stylesheet" href="~/Content/css/Style2.css">
+    <script src="~/Content/JavaScript.js"></script>
+    <style>
+        .dropdown-item
+        {
+            display: block;
+            width: 100%;
+            padding: .25rem 1.5rem;
+            clear: both;
+            font-weight: 400;
+            color: black;
+            text-align: inherit;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0
+        }
+        
+        .dropdown-item:focus, .dropdown-item:hover
+        {
+            color: #16181b;
+            text-decoration: none;
+            background-color: #f8f9fa
+        }
+        
+        .dropdown-item.active, .dropdown-item:active
+        {
+            color: #fff;
+            text-decoration: none;
+            background-color: #007bff
+        }
+        
+        .dropdown-item.disabled, .dropdown-item:disabled
+        {
+            color: #6c757d;
+            pointer-events: none;
+            background-color: transparent
+        }
+        
+        .dropdown-menu.show
+        {
+            display: block;
+        }
+        
+        .dropdown-header
+        {
+            display: block;
+            padding: .5rem 1.5rem;
+            margin-bottom: 0;
+            font-size: .875rem;
+            color: #6c757d;
+            white-space: nowrap
+        }
+        
+        .dropdown-item-text
+        {
+            display: block;
+            padding: .25rem 1.5rem;
+            color: white;
+        }
+
+        @@media (max-width: 768px) 
+        {
+            .dropdown-item
+            {
+                display: block;
+                width: 100%;
+                padding: .25rem 1.5rem;
+                clear: both;
+                font-weight: 400;
+                color: white;
+                text-align: inherit;
+                white-space: nowrap;
+                background-color: transparent;
+                border: 0
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header"> 
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <div class="hidden-xs">
+                    <img src="~/Content/Images/logo.png" class="img-circle pull-left" height="50" width="50" />
+                    @if (User.IsInRole("Administrator") || User.IsInRole("Customer"))
+                    {
+                        @Html.ActionLink("Infinity", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Infinity", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                </div>
+
+                <ul class="nav navbar-nav form-horizontal">
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Search
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="@Url.Action("Brands", "Home")">Brand</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("Categories", "Home")">Category</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("Processors", "Home")">Processor</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("Search", "Home")">Advanced Search and Filters</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Site Details
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="@Url.Action("FAQS", "Home")">FAQs</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("TermsAndConditions", "Home")">Terms and Conditions</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("About", "Home")">About</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("Contact", "Home")">Contact</a>
+                            </div>
+                        </li>
+                    }
+                    else if (User.IsInRole("Customer"))
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Search
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="@Url.Action("Brands", "Home")">Brand</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("Categories", "Home")">Category</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("Processors", "Home")">Processor</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("Search", "Home")">Advanced Search and Filters</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Shopping Details
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="@Url.Action("CartDetails", "Home")">Cart</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("OrderHistory", "Home")">Order History</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Site Details
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="@Url.Action("FAQS", "Home")">FAQs</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("TermsAndConditions", "Home")">Terms and Conditions</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("About", "Home")">About</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("Contact", "Home")">Contact</a>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Site Details
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="@Url.Action("About", "Home")">About</a>
+                                <br />
+                                <a class="dropdown-item" href="@Url.Action("Contact", "Home")">Contact</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Infinity</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

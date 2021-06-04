@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Categories";
+}
+
+<style>
+    body 
+    {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-image: url('../../Content/images/BGContent.jpg');
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+
+<body>
+    <h1 style="text-align: center; color:darkslateblue; font-weight: 700"><b>Categories</b></h1>
+
+    @if (User.IsInRole("Administrator") || User.IsInRole("Customer"))
+    {
+        <div class="row">
+            <div class="col-lg-3">
+                <center><h1>@Html.ActionLink("Desktop", "CategorySearch", "Home", new { category = "Desktop" }, new { @class = "btn btn-primary", style = "width:50%" })</h1></center>
+            </div>
+            <div class="col-lg-3">
+                <center><h1>@Html.ActionLink("Laptop", "CategorySearch", "Home", new { category = "Laptop" }, new { @class = "btn btn-primary", style = "width:50%" })</h1></center>
+            </div>
+            <div class="col-lg-3">
+                <center><h1>@Html.ActionLink("2 in 1", "CategorySearch", "Home", new { category = "TwoInOne" }, new { @class = "btn btn-primary", style = "width:50%" })</h1></center>
+            </div>
+            <div class="col-lg-3">
+                <center><h1>@Html.ActionLink("Touch", "CategorySearch", "Home", new { category = "Touch" }, new { @class = "btn btn-primary", style = "width:50%" })</h1></center>
+            </div>
+            <div class="col-lg-3">
+                <center><h1>@Html.ActionLink("Gaming", "CategorySearch", "Home", new { category = "Gaming" }, new { @class = "btn btn-primary", style = "width:50%" })</h1></center>
+            </div>
+            <div class="col-lg-3">
+                <center><h1>@Html.ActionLink("Workstation", "CategorySearch", "Home", new { category = "Workstation" }, new { @class = "btn btn-primary", style = "width:50%" })</h1></center>
+            </div>
+        </div>
+    }
+</body>

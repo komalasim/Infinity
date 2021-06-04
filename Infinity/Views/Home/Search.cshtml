@@ -1,0 +1,340 @@
+﻿@model Infinity.Models.Product
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<style>
+    body 
+    {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-image: url('../../Content/images/BGContent.jpg');
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    .checkboxNew 
+    {
+        width: 100%;
+        left: -13px;
+        top: -10px;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="LeftAlignContainer">
+            <div class="form-group">
+
+                <div><label>Search Brand: </label></div>
+                <div class="input">
+                    @Html.TextBoxFor(model => model.Brand, htmlAttributes: new { @class = "form-control" })
+                </div>
+
+                <div><label>Search Model: </label></div>
+                <div class="input">
+                    @Html.TextBoxFor(model => model.Model, htmlAttributes: new { @class = "form-control" })
+                </div>
+                <br />
+                <div><label>Choose Price Range: </label></div>
+                <div class="form-group form-horizontal">
+                    <div>
+                        <input type="checkbox" id="Price1" name="Price1" value="true">
+                        <label>50,000 - 100,000</label><br>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Price2" name="Price2" value="true">
+                        <label>100,001 - 150,000</label><br>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Price3" name="Price3" value="true">
+                        <label>150,001 - 200,000</label><br>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="Price4" name="Price4" value="true">
+                        <label>200,000 & Above</label><br>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div><label>Choose Category: </label></div>
+
+                    <div class="form-group form-horizontal">
+                        <div>
+                            <input type="checkbox" id="Desktop" name="Desktop" value="true">
+                            <label for="Desktop">Desktop</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Laptop" name="Laptop" value="true">
+                            <label for="Laptop">Laptop</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="TwoInOne" name="TwoInOne" value="true">
+                            <label for="TwoInOne">2 in 1</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Touch" name="Touch" value="true">
+                            <label for="Touch">Touch</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Gaming" name="Gaming" value="true">
+                            <label for="Gaming">Gaming</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Workstation" name="Workstation" value="true">
+                            <label for="Workstation">Workstation</label><br>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div><label>Choose Drive Type: </label>  </div>
+                <div>
+                    <input type="radio" id="SSD" name="DriveType" value="true">
+                    <label for="SSD">Solid State Drive (SSD)</label><br>
+                    <input type="radio" id="HDD" name="DriveType" value="false">
+                    <label for="HDD">Hard Disk Drive (HDD)</label><br><br>
+                </div>
+
+                <div><label>Search Operating System: </label></div>
+                <div class="input">
+                    @Html.TextBoxFor(model => model.Software, htmlAttributes: new { @class = "form-control" })
+                </div>
+
+                <div><label>Search Processor Name: </label></div>
+                <div class="input">
+                    @Html.TextBoxFor(model => model.Processor, htmlAttributes: new { @class = "form-control" })
+                </div>
+                <br />
+                <div class="form-group">
+                    <div><label>Choose Generation: </label></div>
+
+                    <div class="form-group form-horizontal">
+                        <div>
+                            <input type="checkbox" id="Gen1" name="Gen1" value="true">
+                            <label for="Gen1">11th Generation or Newer</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Gen2" name="Gen2" value="true">
+                            <label for="Gen2">10th Generation</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Gen3" name="Gen3" value="true">
+                            <label for="Gen3">9th Generation</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Gen4" name="Gen4" value="true">
+                            <label for="Gen4">8th Generation</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Gen5" name="Gen5" value="true">
+                            <label for="Gen5">7th Generation or Older</label><br>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div><label>Choose RAM Size: </label></div>
+
+                    <div class="form-group form-horizontal">
+                        <div>
+                            <input type="checkbox" id="RAM1" name="RAM1" value="true">
+                            <label for="RAM1">32 GB or More</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="RAM2" name="RAM2" value="true">
+                            <label for="RAM2">16 GB</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="RAM3" name="RAM3" value="true">
+                            <label for="RAM3">12 GB</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="RAM4" name="RAM4" value="true">
+                            <label for="RAM4">8 GB</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="RAM5" name="RAM5" value="true">
+                            <label for="RAM5">4 GB or Less</label><br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>Choose Disk Storage Size: </label></div>
+
+                    <div class="form-group form-horizontal">
+                        <div>
+                            <input type="checkbox" id="Disk0" name="Disk0" value="true">
+                            <label for="Disk0">Less than 256 GB</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Disk1" name="Disk1" value="true">
+                            <label for="Disk1">256 GB</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Disk2" name="Disk2" value="true">
+                            <label for="Disk2">512 GB</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Disk3" name="Disk3" value="true">
+                            <label for="Disk3">1 TB</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Disk4" name="Disk4" value="true">
+                            <label for="Disk4">2 TB</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Disk5" name="Disk5" value="true">
+                            <label for="Disk5">More than 2 TB</label><br>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div><label>Choose Display Size: </label></div>
+
+                    <div class="form-group form-horizontal">
+                        <div>
+                            <input type="checkbox" id="Screen1" name="Screen1" value="true">
+                            <label for="Screen1">More than 17 inch</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Screen2" name="Screen2" value="true">
+                            <label for="Screen2">17 inch</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Screen3" name="Screen3" value="true">
+                            <label for="Screen3">15 inch</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Screen4" name="Screen4" value="true">
+                            <label for="Screen4">14 inch</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Screen5" name="Screen5" value="true">
+                            <label for="Screen5">13 inch</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="Screen6" name="Screen6" value="true">
+                            <label for="Screen6">Less than 13 inch</label><br>
+                        </div>
+                    </div>
+                </div>
+
+               
+
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/start/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#Brand").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Home/AutoCompleteBrand",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.Name, value: item.Name };
+                        }))
+                    }
+                })
+            },
+            messages: {
+                noResults: "",
+                results: function (count) {
+                    return count + (count > 1 ? ' results' : ' result ') + ' found';
+                }
+            }
+        });
+    })
+
+    $(document).ready(function () {
+        $("#Model").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Home/AutoCompleteModel",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.Name, value: item.Name };
+                        }))
+                    }
+                })
+            },
+            messages: {
+                noResults: "",
+                results: function (count) {
+                    return count + (count > 1 ? ' results' : ' result ') + ' found';
+                }
+            }
+        });
+    })
+
+  
+    $(document).ready(function () {
+        $("#Processor").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Home/AutoCompleteProcessor",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.Name, value: item.Name };
+                        }))
+                    }
+                })
+            },
+            messages: {
+                noResults: "",
+                results: function (count) {
+                    return count + (count > 1 ? ' results' : ' result ') + ' found';
+                }
+            }
+        });
+    })
+
+    $(document).ready(function () {
+        $("#Software").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Home/AutoCompleteSoftware",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.Name, value: item.Name };
+                        }))
+                    }
+                })
+            },
+            messages: {
+                noResults: "",
+                results: function (count) {
+                    return count + (count > 1 ? ' results' : ' result ') + ' found';
+                }
+            }
+        });
+    })
+
+
+</script>

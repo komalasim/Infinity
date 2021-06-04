@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Infinity.Models.Order>
+@{
+    ViewBag.Title = "Order Details";
+}
+
+<link href="~/Content/css/OrderDetails.css" rel="stylesheet" type="text/css" />
+
+<div class="content">
+    <h2>Your order has been placed!</h2>
+    <br />
+    <div class="row">
+        <div class="col-md-3">
+            <p style="font-size: 17px"><b>Order Placed:</b></p>
+            <br />
+            <p style="font-size: 17px"><b>Order ID:</b></p> 
+            <br />
+            <p style="font-size: 17px"><b>Order Total:</b></p> 
+            <br />
+            <p style="font-size: 17px"><b>Address:</b></p>
+        </div>
+        <div class="col-md-3">
+            <p style="font-size: 17px">@DateTime.Now.ToString("yyyy-MM-dd")</p>
+            <br />
+            <p style="font-size: 17px">@Session["OrderID"]</p>
+            <br />
+            <p style="font-size: 17px">@Session["TPrice"]</p>
+            <br />
+            <p style="font-size: 17px">@Session["Address"]</p>
+        </div>
+    </div>
+    <br />
+    <p style="font-size: 18px;">Estimated delivery time 15 days. Thank you for the purchase.</p>
+    <br />
+    <br />
+    <br />
+    <br />
+    @Html.ActionLink("Back to Home", "Index", "Home", new { area = "" }, new { @class = "btn btn-info" })
+</div>

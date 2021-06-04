@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Infinity.Models.Order>
+@{
+    ViewBag.Title = "OrderHistory";
+}
+
+<link href="~/Content/css/OrderDetails.css" rel="stylesheet" type="text/css" />
+
+<style>
+    body 
+    {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-image: url('../../Content/images/BGContent.jpg');
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+
+@if (User.IsInRole("Administrator") || User.IsInRole("Customer"))
+{
+    <div class="content">
+        @if (Model != null)
+        {
+            <h2> Order History</h2>
+            <br />
+            <table class="table">
+                <tr>
+                    <th style="text-align: center;">
+                        <h4>Order ID</h4>
+                    </th>
+                    <th style="text-align: center;">
+                        <h4>Date</h4>
+                    </th>
+                    <th style="text-align: center;">
+                        <h4>Order Details</h4>
+                    </th>
+                    <th style="text-align: center;">
+                        <h4>Total Price</h4>
+                    </th>
+                    <th style="text-align: center;">
+                        <h4>Delivery Address</h4>
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="text-align: center;">
+                            @item.OrderID
+                        </td>
+                        <td style="text-align: center;">
+                            @item.Date
+                        </td>
+                        <td style="text-align: center;">
+                            @item.OrderDetails
+                        </td>
+                        <td style="text-align: center;">
+                            @item.TotalPrice
+                        </td>
+                        <td style="text-align: center;">
+                            @item.UserAddress
+                        </td>
+                    </tr>
+                }
+        </table>
+        }
+        else
+        {
+            <h2>No Order History</h2>
+        }
+
+        <br />
+        @Html.ActionLink("Back to Home", "Index", "Home", new { area = "" }, new { @class = "btn btn-info" })
+    </div>
+}

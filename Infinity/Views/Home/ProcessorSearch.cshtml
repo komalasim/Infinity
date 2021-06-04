@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Infinity.Models.Product>
+@{
+    ViewBag.Title = "Processor Search";
+}
+
+<style>
+    body 
+    {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-image: url('../Content/images/bgImage.jpg');
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+
+@{
+    string Pro = Session["ProcessorSelected"].ToString();
+}
+
+<h1 style="text-align: center; color:darkslateblue; font-weight: 700"><b>@Pro</b></h1>
+
+@if (User.IsInRole("Administrator") || User.IsInRole("Customer"))
+{
+    <div class="row">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-md-2 Horizontal">
+                    <div class="Product">
+                        @Html.Partial("_Index", item)
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+}

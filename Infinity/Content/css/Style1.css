@@ -1,0 +1,69 @@
+button 
+{   
+    background-color: rgb(60, 187, 187);   
+    width: 100%;  
+    color: white;   
+    padding: 15px;   
+    margin: 10px 0px;   
+    border: none;   
+    cursor: pointer;   
+}   
+
+button:hover
+{
+    opacity: 0.7;
+}
+
+form 
+{   
+    margin: 0 auto; 
+}   
+
+input[type=text], input[type=password], input[type=email], input[type=date], input[type=int], input[type=float]
+{   
+    width: 100%;   
+    margin: 8px 0px ;  
+    padding: 12px 12px;   
+    border: 2px solid grey;
+    box-sizing: border-box;  
+}  
+
+input:hover
+{
+    border: 2px solid palevioletred;
+}
+
+input[type=file]
+{
+    background-color: rgb(60, 187, 187);   
+    width: 100%;  
+    color: white;   
+    padding: 15px;   
+    margin: 10px 0px;   
+    border: none;   
+    cursor: pointer;        
+} 
+
+.LeftAlignContainer 
+{   
+    padding: 20px 20px 0px;   
+    text-align: left;
+} 
+
+.CenterAlignContainer 
+{    
+    background-color: lightblue;
+    text-align: center;
+}   
+
+.CenterAlignContainer input[type = button]
+{    
+    border: none;
+    width: 50%;   
+    padding: 10px 18px;  
+    margin: 10px 5px;  
+    align-self: center;
+    background-color: rgb(60, 187, 187);   
+    color: white;   
+    cursor: pointer;   
+}

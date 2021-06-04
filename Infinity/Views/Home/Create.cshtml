@@ -1,0 +1,308 @@
+﻿@model Infinity.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<style>
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    [class*="col-"] {
+        float: left;
+        padding: 15px;
+    }
+
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+
+    body {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-image: url("../../Content/images/BG6.jpg");
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    .checkboxNew {
+        width: 100%;
+        left: -13px;
+        top: -10px;
+    }
+</style>
+<body>
+
+    @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div class="row">
+
+        @Html.AntiForgeryToken()
+        <div class="LeftAlignContainer">
+            <br /><br />
+            <h1 style="text-align: center; color:darkslateblue; font-weight: 700"><b>PRODUCT DETAILS</b></h1>
+
+            <hr />
+            <h4>General Details</h4>
+            <br />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div><label>Brand Name </label></div>
+                <div class="input">
+                    @Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                    @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div><label>Model Name </label></div>
+                <div class="input">
+                    @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                    @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div><label>Price (in PKR) </label></div>
+                <div class="input">
+                    @Html.EditorFor(model => model.Cost, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                    @Html.ValidationMessageFor(model => model.Cost, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div><label>Category </label></div>
+                <div class="form-group checkboxNew col-md-1">
+                    @Html.CheckBoxFor(m => m.Desktop, new { @class = "Category", Name = "Desktop", id = "desktop" })
+                    @Html.LabelFor(m => m.Desktop, "Desktop")
+                    <br />
+                    @Html.CheckBoxFor(m => m.Laptop, new { @class = "Category", Name = "Laptop", id = "laptop" })
+                    @Html.LabelFor(m => m.Laptop, "Laptop")
+                    <br />
+                    @Html.CheckBoxFor(m => m.Touch, new { @class = "Category", Name = "Touch", id = "touch" })
+                    @Html.LabelFor(m => m.Touch, "Touch")
+                    <br />
+                    @Html.CheckBoxFor(m => m.TwoInOne, new { @class = "Category", Name = "TwoInOne", id = "twoinone" })
+                    @Html.LabelFor(m => m.TwoInOne, "2 in 1")
+                    <br />
+                    @Html.CheckBoxFor(m => m.Gaming, new { @class = "Category", Name = "Gaming", id = "gaming" })
+                    @Html.LabelFor(m => m.Gaming, "Gaming")
+                    <br />
+                    @Html.CheckBoxFor(m => m.Workstation, new { @class = "Category", Name = "Workstation", id = "workstation" })
+                    @Html.LabelFor(m => m.Workstation, "Workstation")
+                </div>
+
+                @* ------------------------------------------------------------------------------------------------------------------------- *@
+
+                <br /><h4>Processor Details</h4><br />
+
+                <div class="form-group">
+                    <div><label>Number of Cores </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.Core, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.Core, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>Generation </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.Generation, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.Generation, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>Processor Name </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.Processor, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.Processor, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* ------------------------------------------------------------------------------------------------------------------------- *@
+
+                <br /><h4>Screen Details</h4><br />
+
+                <div class="form-group">
+                    <div><label>Display Size </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>Display Resolution </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.Resolution, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.Resolution, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                @* ------------------------------------------------------------------------------------------------------------------------- *@
+
+                <br /><h4>Size Dimensions</h4><br />
+
+                <div class="form-group">
+                    <div><label>Length (in cm) </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.Length, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.Length, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>Width (in cm) </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.Width, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.Width, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>Height (in cm) </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>Weight (in Kg) </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* ------------------------------------------------------------------------------------------------------------------------- *@
+
+                <br /><h4>Memory Details</h4><br />
+
+                <div class="form-group">
+                    <div><label>RAM (in GB) </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.RAM, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.RAM, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group form-horizontal">
+                    <label>Drive Type: </label>
+                    <div class="radio">
+                        @Html.RadioButtonFor(m => m.DriveType, true, new { @class = "drivetype", Name = "DriveType", id = "SSD" })
+                        @Html.LabelFor(m => m.DriveType, "Solid State Drive (SSD)", new { style = "font-weight: bold;" })
+                    </div>
+
+                    <div class="radio">
+                        @Html.RadioButtonFor(m => m.DriveType, false, new { @class = "drivetype", Name = "DriveType", id = "HDD" })
+                        @Html.LabelFor(m => m.DriveType, "Hard Disk Drive (HDD)", new { style = "font-weight: bold;" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>Disk Space (in GB) </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.DiskSpace, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.DiskSpace, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @* ------------------------------------------------------------------------------------------------------------------------- *@
+
+                <br /><h4>Port Count Details</h4><br />
+
+                <div class="form-group">
+                    <div><label>USB - A </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.USBA, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.USBA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>USB - C </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.USBC, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.USBC, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>Ethernet </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.Ethernet, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.Ethernet, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>HDMI </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.HDMI, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.HDMI, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>VGA </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.VGA, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.VGA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-group checkboxNew col-md-1">
+                        @Html.CheckBoxFor(model => model.AudioJack, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.LabelFor(m => m.AudioJack, "Audio Jack")
+                        <br />
+                        @Html.CheckBoxFor(model => model.DVDPlayer, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.LabelFor(m => m.DVDPlayer, "CD/DVD Player")
+                    </div>
+                </div>
+
+                @* ------------------------------------------------------------------------------------------------------------------------- *@
+
+                <br /><h4>Other Details</h4><br />
+
+                <div class="form-group">
+                    <div><label>Features </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.Feature, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.Feature, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>Operating System </label></div>
+                    <div class="input">
+                        @Html.EditorFor(model => model.Software, new { htmlAttributes = new { @class = "form-control", style = "border: 2px solid grey; box-sizing: border-box; " } })
+                        @Html.ValidationMessageFor(model => model.Software, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div><label>Image </label></div>
+                    <div class="input">
+                        <input type="file" name="file" id="file" /><br>
+                        <input type="submit" value="Create" class="btn btn-info" /> |
+                        @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-info" })
+                        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    }
+</body>

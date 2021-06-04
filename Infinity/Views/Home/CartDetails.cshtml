@@ -1,0 +1,108 @@
+﻿@using Infinity.Models
+@model IEnumerable<CartItem>
+@{
+    ViewBag.Title = "CartDetails";
+}
+
+<head>
+    <link href="~/Content/css/OrderDetails.css" rel="stylesheet" type="text/css" />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <style>
+        body 
+        {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-image: url('../../Content/images/BGContent.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $('.count').prop('disabled', true);
+
+            $(document).on('click', '.plus', function () {
+                $('.count').val(parseInt($('.count').val()) + 1);
+            });
+
+            $(document).on('click', '.minus', function () {
+                $('.count').val(parseInt($('.count').val()) - 1);
+                if ($('.count').val() == 0) {
+                    $('.count').val(1);
+                }
+            });
+        });
+    </script>
+</head>
+
+<div class="content">
+    <h2>Your Shopping Bag</h2>
+    <br />
+    <table class="table">
+        @if (Session["cart"] != null)
+        {
+            <tr>
+                <th style="text-align: center;">
+                    <h4>Image</h4>
+                </th>
+                <th style="text-align: center;">
+                    <h4>Product Name</h4>
+                </th>
+                <th style="text-align: center;">
+                    <h4>Quantity</h4>
+                </th>
+                <th style="text-align: center;">
+                    <h4>Price</h4>
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            foreach (CartItem item in (List<CartItem>)Session["cart"])
+            {
+                <tr>
+                    <td class="col-md-4" style="text-align: center;">
+                        <img src="~/Content/@Html.DisplayFor(modelItem => item.product.Image)" style="width:30%" />
+                    </td>
+                    <td style="text-align: center;">
+                        @item.product.Model
+                    </td>
+                    <td style="text-align: center;">
+                        <div class="qty mt-5">
+                            <span class="minus bg-dark" onclick="location.href='@Url.Action("DecreaseQuantity", "Home", new { productId = @item.product.ID })'">-</span>
+                            <input id="Quantity" type="number" class="count" value="@item.Quantity" name="qty" onchange="">
+                            <span class="plus bg-dark" onclick="location.href='@Url.Action("IncreaseQuantity", "Home", new { productId = @item.product.ID })'">+</span>
+                        </div>
+                    </td>
+                    <td style="text-align: center;">
+                        @item.product.Cost
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td style="text-align: center;">
+                        @using (Html.BeginForm("DeleteCartEntry", "Home", new { productId = item.product.ID }, FormMethod.Post))
+                        {
+                            <button type="submit" class="btn"><i class="fa fa-close"></i></button>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+    @if (Session["cart"] != null)
+    {
+        <div style="text-align:center">  
+            <button type="submit" onclick="location.href='@Url.Action("PlaceOrder", "Home")'" style="width: 30%; color: white;"><b>Checkout</b></button>
+        </div>
+    }
+    else
+    {
+        <h4>Cart is Empty</h4>
+    }
+</div>

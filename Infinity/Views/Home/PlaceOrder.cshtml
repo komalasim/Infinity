@@ -1,0 +1,57 @@
+﻿@using Infinity.Models
+@model IEnumerable<Infinity.Models.CartItem>
+@{
+    ViewBag.Title = "PlaceOrder";
+}
+
+<link href="~/Content/css/OrderDetails.css" rel="stylesheet" type="text/css" />
+<div class="content">
+    <h2>Place Order</h2>
+    <br />
+    <label style="font-size: 17px;">Order Total: @Session["TPrice"].ToString()</label>
+    <br />
+    <table class="table">
+        @if (Session["cart"] != null)
+        {
+            <tr>
+                <th style="text-align: center;">
+                    <h4>Image</h4>
+                </th>
+                <th style="text-align: center;">
+                    <h4>Product Name</h4>
+                </th style="text-align: center;">
+                <th style="text-align: center;">
+                    <h4>Quantity</h4>
+                </th>
+                <th style="text-align: center;">
+                    <h4>Price</h4>
+                </th>
+            </tr>
+            foreach (CartItem item in (List<CartItem>)Session["cart"])
+            {
+                <tr>
+                    <td class="col-md-4" style="text-align: center;">
+                        <img src="~/Content/@Html.DisplayFor(modelItem => item.product.Image)" style="width:30%" />
+                    </td>
+                    <td style="text-align: center;">
+                        @item.product.Model
+                    </td>
+                    <td style="text-align: center;">
+                        @item.Quantity
+                    </td>
+                    <td style="text-align: center;">
+                        @item.product.Cost
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+    <form asp-action="PlaceOrder" method="post">
+        <label>Address: </label> &nbsp; &nbsp;
+        <input required type="text" id="Address" name="Address">
+        <div style="text-align:center">
+            <button type="submit" style="width: 30%;"><b>Place Order</b></button>
+        </div>
+    </form>
+</div>

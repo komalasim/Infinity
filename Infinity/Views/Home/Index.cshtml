@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Infinity.Models.Product>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<br />
+
+<style>
+    body
+    {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-image: url('../Content/images/bgImage.jpg');
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+
+@if (User.IsInRole("Administrator"))
+{
+    <button type="button" class="btn" onclick='window.location = "@Url.Action("Create", "Home")";'>Add New Laptop</button>
+}
+
+<br />
+<br />
+@if (User.IsInRole("Administrator") || User.IsInRole("Customer"))
+{
+    <div class="row">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-md-2 Horizontal">
+                    <div class="Product">
+                        @Html.Partial("_Index", item)
+                    </div>
+                </div>
+            }
+        }
+        
+    </div>
+}

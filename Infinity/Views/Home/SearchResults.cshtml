@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Infinity.Models.Product>
+
+@{
+    ViewBag.Title = "Search Results";
+}
+
+<br />
+
+<style>
+    body 
+    {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-image: url('../Content/images/bgImage.jpg');
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+
+@if (User.IsInRole("Administrator") || User.IsInRole("Customer"))
+{
+    <div class="row">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-sm-4 col-md-3 col-lg-2 Horizontal">
+                    <div class="Product">
+                        @Html.Partial("_Index", item)
+                    </div>
+                </div>
+            }
+
+            if (Session["ProductCount"].ToString().Equals("false"))
+            {
+                <h3 style="color: white;">No Search Results Found!</h3>
+            }
+        }
+    </div>
+}

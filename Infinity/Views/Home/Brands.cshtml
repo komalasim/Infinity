@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Infinity.Models.Product>
+@{
+    ViewBag.Title = "Brands";
+}
+
+<style>
+    body 
+    {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-image: url('../../Content/images/BGContent.jpg');
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+
+<body>
+    <h1 style="text-align: center; color:darkslateblue; font-weight: 700"><b>Brands</b></h1>
+
+    @if (User.IsInRole("Administrator") || User.IsInRole("Customer"))
+    {
+        string BrandList = Session["BrandList"].ToString();
+        string[] Brands = BrandList.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (string Brand in Brands)
+        {
+            <div class="row">
+                <center>
+                    <div class="col-lg-3">
+                        <h1>@Html.ActionLink(Brand, "BrandSearch", "Home", new { brand = Brand }, new { @class = "btn btn-primary", style = "width:50%" })</h1>
+                    </div>
+                </center>
+            </div>
+        }
+    }
+</body>

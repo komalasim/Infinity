@@ -1,0 +1,304 @@
+﻿@model Infinity.Models.Product
+
+@{
+    ViewBag.Title = "Product Details";
+}
+
+<style>
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    [class*="col-"] {
+        float: left;
+        padding: 15px;
+    }
+
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+
+    @@media only screen and (min-width: 768px) 
+    {
+        /* For desktop: */
+        .col-1 {
+            width: 8.33%;
+        }
+
+        .col-2 {
+            width: 16.66%;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .col-4 {
+            width: 33.33%;
+        }
+
+        .col-5 {
+            width: 41.66%;
+        }
+
+        .col-6 {
+            width: 50%;
+        }
+
+        .col-7 {
+            width: 58.33%;
+        }
+
+        .col-8 {
+            width: 66.66%;
+        }
+
+        .col-9 {
+            width: 75%;
+        }
+
+        .col-10 {
+            width: 83.33%;
+        }
+
+        .col-11 {
+            width: 91.66%;
+        }
+
+        .col-12 {
+            width: 100%;
+        }
+    }
+</style>
+
+<body>
+    <div class="row container-fluid ProductDescription" style="margin: auto;">
+        <div class="col-4"><img src="~/Content/@Html.DisplayFor(modelItem => modelItem.Image)" style="width:70%;"></div>
+        <div class="col-8">
+            <h1 style="color: cadetblue;">@Html.DisplayFor(model => model.Brand) @Html.DisplayFor(model => model.Model)</h1>
+            <h2 class="Cost">Rs. @Html.DisplayFor(model => model.Cost)</h2>
+            <dl class="dl-horizontal">
+                <dt></dt>
+                <dd>
+                    &nbsp;
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayName("Category")
+                </dt>
+                <dd></dd>
+
+                <dt style="font-size: 15px">
+                    @Html.DisplayName("Desktop")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Desktop)
+                </dd>
+
+                <dt style="font-size: 15px">
+                    @Html.DisplayName("Laptop")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Laptop)
+                </dd>
+
+                <dt style="font-size: 15px">
+                    @Html.DisplayName("2 in 1")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TwoInOne)
+                </dd>
+
+                <dt style="font-size: 15px">
+                    @Html.DisplayName("Touch")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Touch)
+                </dd>
+
+                <dt style="font-size: 15px">
+                    @Html.DisplayName("Gaming")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Gaming)
+                </dd>
+
+                <dt style="font-size: 15px">
+                    @Html.DisplayName("Workstation")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Workstation)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayName("Number of Cores")
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.Core)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.Generation)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.Generation)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.Processor)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.Processor)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.Size)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.Size)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.Resolution)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.Resolution)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.Length)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.Length)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.Width)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.Width)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.Height)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.Height)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.Weight)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.Weight)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.RAM)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.RAM)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.DriveType)
+                </dt>
+                <dd style="font-size: 17px">
+                    @if (Model.DriveType == true)
+                    {
+                        @Html.Raw("SSD")
+                    }
+                    else
+                    {
+                        @Html.Raw("HDD")
+                    }
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.DiskSpace)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.DiskSpace)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayName("USB - A")
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.USBA)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayName("USB - C")
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.USBC)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.Ethernet)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.Ethernet)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.HDMI)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.HDMI)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.VGA)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.VGA)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayName("Audio Jack")
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.AudioJack)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayName("CD/DVD Player")
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.DVDPlayer)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.Feature)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.Feature)
+                </dd>
+                <dt style="font-size: 17px">
+                    @Html.DisplayNameFor(model => model.Software)
+                </dt>
+                <dd style="font-size: 17px">
+                    @Html.DisplayFor(model => model.Software)
+                </dd>
+            </dl>
+
+            @if (User.IsInRole("Customer"))
+            {
+                <p>
+                    @using (Html.BeginForm("AddToCart", "Home", new { ProductId = Model.ID }, FormMethod.Post))
+                    {
+                        <button type="submit">Add to Cart</button>
+                    }
+
+                    @*<button onclick="ShowAlert()"> Add to Cart       <i class="fas fa-cart-plus"></i></button>
+                    <div id="AddCart" class="alert alert-success alert-dismissable">
+                        <i class="far fa-thumbs-up"></i>
+                        Success! Product Added to Cart!
+                    </div>
+                    <br>*@
+                </p>
+            }
+            
+        </div>
+    </div>
+    
+    <br />
+
+    @if (User.IsInRole("Administrator"))
+    {
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-info" })
+        </p>
+    }
+    else
+    {
+        <p>
+            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-info" })
+        </p>
+    }
+</body>
