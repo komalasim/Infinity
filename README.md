@@ -42,14 +42,14 @@ The following images show how the application will be displayed and used by the 
 
 Login Page:
 
-![Screenshot](https://github.com/Noor24-fast/IlluminationApplication/blob/master/Screenshot%201.png)
+![Screenshot](https://github.com/Noor24-fast/Infinity/blob/master/Screenshot%201.png)
 
 
 Home Page:
 
-![Screenshot](https://github.com/Noor24-fast/IlluminationApplication/blob/master/Screenshot%202.png)
+![Screenshot](https://github.com/Noor24-fast/Infinity/blob/master/Screenshot%202.png)
 
 
 Shopping Cart Page:
 
-[Screenshot](https://github.com/Noor24-fast/IlluminationApplication/blob/master/Screenshot%203.png)
+[Screenshot](https://github.com/Noor24-fast/Infinity/blob/master/Screenshot%203.png)
