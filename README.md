@@ -37,5 +37,19 @@ This project requires the installation of Visual Studio, Microsoft SQL Server Ma
 
 
 ## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
+The following images show how the application will be displayed and used by the user.
+
+
+Login Page:
+
+![Screenshot](https://github.com/Noor24-fast/IlluminationApplication/blob/master/Screenshot%201.png)
+
+
+Home Page:
+
+![Screenshot](https://github.com/Noor24-fast/IlluminationApplication/blob/master/Screenshot%202.png)
+
+
+Shopping Cart Page:
+
+[Screenshot](https://github.com/Noor24-fast/IlluminationApplication/blob/master/Screenshot%203.png)
